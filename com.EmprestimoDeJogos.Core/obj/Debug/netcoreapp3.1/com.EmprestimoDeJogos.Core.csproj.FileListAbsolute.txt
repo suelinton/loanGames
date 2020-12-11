@@ -1,0 +1,8 @@
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Core\bin\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Core.deps.json
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Core\bin\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Core.dll
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Core\bin\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Core.pdb
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Core\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Core.AssemblyInfoInputs.cache
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Core\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Core.AssemblyInfo.cs
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Core\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Core.csproj.CoreCompileInputs.cache
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Core\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Core.dll
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Core\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Core.pdb

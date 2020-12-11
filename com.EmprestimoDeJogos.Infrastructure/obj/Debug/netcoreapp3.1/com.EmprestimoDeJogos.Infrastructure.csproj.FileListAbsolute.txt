@@ -1,0 +1,15 @@
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\bin\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.deps.json
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\bin\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.dll
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.AssemblyInfo.cs
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\bin\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.runtimeconfig.json
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\bin\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.runtimeconfig.dev.json
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.genruntimeconfig.cache
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\bin\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.pdb
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\bin\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Core.dll
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\bin\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Core.pdb
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.csproj.CopyComplete
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.dll
+C:\Users\Altran\source\repos\com.EmprestimoDeJogos\com.EmprestimoDeJogos.Infrastructure\obj\Debug\netcoreapp3.1\com.EmprestimoDeJogos.Infrastructure.pdb
