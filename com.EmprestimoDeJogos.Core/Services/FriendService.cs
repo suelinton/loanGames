@@ -13,6 +13,11 @@ namespace com.EmprestimoDeJogos.Core.Services
             _friendRepository = friendRepository;
         }
 
+        public FriendEntity CreateFriend(FriendEntity friend)
+        {
+            return _friendRepository.Add(friend);
+        }
+
         public IEnumerable<FriendEntity> GetFriends()
         {
             return _friendRepository.GetFriends();

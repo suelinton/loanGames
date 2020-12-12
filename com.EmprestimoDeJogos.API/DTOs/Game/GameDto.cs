@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace com.EmprestimoDeJogos.API.DTOs.Game
 {
-    public class GameDto
+    public class GameDto : BaseDto
     {
         public string Name { get; set; }
-        public FriendEntity LoanedTo { get; set; }
     }
 }

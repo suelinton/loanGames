@@ -9,5 +9,6 @@ namespace com.EmprestimoDeJogos.Core.Interfaces
     {
         IEnumerable<GameEntity> GetGames();
         GameEntity Add(GameEntity game);
+        GameEntity GetGame(int id);
     }
 }

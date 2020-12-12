@@ -14,6 +14,7 @@ namespace com.EmprestimoDeJogos.Infrastructure
 
         public DbSet<FriendEntity> Friends { get; set; }
         public DbSet<GameEntity> Games { get; set; }
+        public DbSet<LoanEntity> Loans { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

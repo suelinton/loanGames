@@ -18,6 +18,11 @@ namespace com.EmprestimoDeJogos.Core.Services
             return _gameRepository.Add(game);
         }
 
+        public GameEntity GetGame(int id)
+        {
+            return _gameRepository.GetGame(id);
+        }
+
         public IEnumerable<GameEntity> GetGames()
         {
             return _gameRepository.GetGames();

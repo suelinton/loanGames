@@ -1,5 +1,6 @@
 ﻿using com.EmprestimoDeJogos.Core.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace com.EmprestimoDeJogos.Core.Interfaces
 {
@@ -7,5 +8,6 @@ namespace com.EmprestimoDeJogos.Core.Interfaces
     {
         IEnumerable<GameEntity> GetGames();
         GameEntity CreateGame(GameEntity game);
+        GameEntity GetGame(int id);
     }
 }
