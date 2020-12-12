@@ -29,7 +29,7 @@ namespace com.EmprestimoDeJogos.API.Controllers
                 result.Select(
                     (game) => new GameDto() { 
                         Name = game.Name,
-                        LoanedTo = game.Friend
+                        Id = game.Id
                     }
                 )
             );
@@ -53,19 +53,23 @@ namespace com.EmprestimoDeJogos.API.Controllers
             return CreatedAtAction("GetGame", new { id = game.Id }, game);
         }
 
-        // GET: api/Games/5
-        //[HttpGet("{id}")]
-        //public async ActionResult<GameDTO> GetGame(int id)
-        //{
-        //    var game = await _gameService.Games.FindAsync(id);
+        //GET: api/Games/5
+        [HttpGet("{id}")]
+        public ActionResult<GameDto> GetGame(int id)
+        {
+            var game = _gameService.GetGame(id);
 
-        //    if (game == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (game == null)
+            {
+                return NotFound();
+            }
 
-        //    return game;
-        //}
+            return new GameDto()
+            {
+                Id = game.Id,
+                Name = game.Name
+            };
+        }
 
         // PUT: api/Games/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
