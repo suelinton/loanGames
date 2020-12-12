@@ -8,6 +8,7 @@ using com.EmprestimoDeJogos.Infrastructure;
 using com.EmprestimoDeJogos.Core.Interfaces;
 using com.EmprestimoDeJogos.Core.Services;
 using com.EmprestimoDeJogos.Infrastructure.Data;
+using AutoMapper;
 
 namespace com.EmprestimoDeJogos.API
 {
@@ -32,6 +33,8 @@ namespace com.EmprestimoDeJogos.API
             services.AddScoped<IFriendService, FriendService>();
             services.AddScoped<IGameRepository, GameRepository>();
             services.AddScoped<IFriendRepository, FriendRepository>();
+
+            services.AddAutoMapper(typeof(Startup).Assembly);
 
         }
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using com.EmprestimoDeJogos.Core.Interfaces;
 using com.EmprestimoDeJogos.API.DTOs.Game;
 using com.EmprestimoDeJogos.Core.Entities;
+using AutoMapper;
 
 namespace com.EmprestimoDeJogos.API.Controllers
 {
@@ -11,10 +12,12 @@ namespace com.EmprestimoDeJogos.API.Controllers
     public class GamesController : ControllerBase
     {
         private readonly IGameService _gameService;
+        private readonly IMapper _mapper;
 
-        public GamesController(IGameService gameService)
+        public GamesController(IGameService gameService, IMapper mapper)
         {
             _gameService = gameService;
+            _mapper = mapper;
         }
 
         // GET: api/Games
@@ -25,14 +28,7 @@ namespace com.EmprestimoDeJogos.API.Controllers
 
             var result = _gameService.GetGames();
 
-            response.Games.AddRange(
-                result.Select(
-                    (game) => new GameDto() { 
-                        Name = game.Name,
-                        Id = game.Id
-                    }
-                )
-            );
+            response.Games.AddRange(result.Select(_mapper.Map<GameDto>));
 
             return response;
         }
