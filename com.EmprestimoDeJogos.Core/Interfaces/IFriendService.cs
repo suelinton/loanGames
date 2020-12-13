@@ -12,5 +12,7 @@ namespace com.EmprestimoDeJogos.Core.Interfaces
         FriendEntity GetFriend(int id);
         void Update(FriendEntity friend);
         void Delete(FriendEntity friendEntity);
+        void BorrowGame(int id, int idGame);
+        IEnumerable<GameEntity> Borrows(int id);
     }
 }

@@ -18,15 +18,21 @@ namespace com.EmprestimoDeJogos.API.Controllers
     [ApiController]
     public class FriendController : ControllerBase
     {
+        #region Properties
         private readonly IFriendService _friendService;
         private readonly IMapper _mapper;
 
+        #endregion
+
+        #region Constructor
         public FriendController(IMapper mapper, IFriendService friendService)
         {
             _mapper = mapper;
             _friendService = friendService;
         }
+        #endregion
 
+        #region Public methods
         // GET: api/<FriendController>
         [HttpGet]
         public ActionResult<ListFriendResponse> Get()
@@ -41,8 +47,6 @@ namespace com.EmprestimoDeJogos.API.Controllers
         }
 
         // POST: api/Friend
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public ActionResult<FriendEntity> PostFriend(CreateFriendRequest request)
         {
@@ -71,8 +75,6 @@ namespace com.EmprestimoDeJogos.API.Controllers
         }
 
         // PUT: api/Friend/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public IActionResult PutFriend(int id, FriendDto Friend)
         {
@@ -115,10 +117,47 @@ namespace com.EmprestimoDeJogos.API.Controllers
             return _mapper.Map<FriendDto>(Friend);
         }
 
+        [HttpPost("{id}/borrow/{idGame}")]
+        public IActionResult Borrow(int id, int idGame)
+        {
+            if (!FriendExists(id))
+            {
+                return NotFound("Amigo não existe na base de dados.");
+            }
+
+            _friendService.BorrowGame(id, idGame);
+            return Ok();
+        }
+        
+        [HttpGet("{id}/borrows")]
+        public ActionResult<ListBorrowResponse> Borrow(int id)
+        {
+            if (!FriendExists(id))
+            {
+                return NotFound("Amigo não existe na base de dados.");
+            }
+
+            var result = _friendService.Borrows(id);
+
+            if(result == null)
+            {
+                return NoContent();
+            }
+
+            var response = new ListBorrowResponse();
+
+            response.Games.AddRange(result.Select(_mapper.Map<GameDto>));
+
+            return response;
+        }
+        #endregion
+
+        #region Private methods
         private bool FriendExists(int id)
         {
             return _friendService.GetFriends().Any(e => e.Id == id);
-        }
+        } 
+        #endregion
 
     }
 }

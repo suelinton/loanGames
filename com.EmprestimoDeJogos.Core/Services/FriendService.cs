@@ -13,6 +13,16 @@ namespace com.EmprestimoDeJogos.Core.Services
             _friendRepository = friendRepository;
         }
 
+        public void BorrowGame(int id, int idGame)
+        {
+            _friendRepository.Borrow(id, idGame);
+        }
+
+        public IEnumerable<GameEntity> Borrows(int id)
+        {
+            return _friendRepository.GetBorrows(id);
+        }
+
         public FriendEntity CreateFriend(FriendEntity friend)
         {
             return _friendRepository.Add(friend);
