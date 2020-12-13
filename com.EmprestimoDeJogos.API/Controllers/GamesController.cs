@@ -4,10 +4,11 @@ using com.EmprestimoDeJogos.Core.Interfaces;
 using com.EmprestimoDeJogos.API.DTOs.Game;
 using com.EmprestimoDeJogos.Core.Entities;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace com.EmprestimoDeJogos.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/game")]
     [ApiController]
     public class GamesController : ControllerBase
     {
@@ -20,7 +21,7 @@ namespace com.EmprestimoDeJogos.API.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/Games
+        // GET: api/Game
         [HttpGet]
         public ActionResult<ListGameResponse> GetGames()
         {
@@ -33,7 +34,7 @@ namespace com.EmprestimoDeJogos.API.Controllers
             return response;
         }
 
-        // POST: api/Games
+        // POST: api/Game
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
@@ -49,7 +50,7 @@ namespace com.EmprestimoDeJogos.API.Controllers
             return CreatedAtAction("GetGame", new { id = game.Id }, game);
         }
 
-        //GET: api/Games/5
+        //GET: api/Game/5
         [HttpGet("{id}")]
         public ActionResult<GameDto> GetGame(int id)
         {
@@ -60,64 +61,57 @@ namespace com.EmprestimoDeJogos.API.Controllers
                 return NotFound();
             }
 
-            return new GameDto()
-            {
-                Id = game.Id,
-                Name = game.Name
-            };
+            return _mapper.Map<GameDto>(game);
         }
 
-        // PUT: api/Games/5
+        // PUT: api/Game/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutGame(int id, Game game)
-        //{
-        //    if (id != game.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpPut("{id}")]
+        public IActionResult PutGame(int id, GameDto game)
+        {
+            if (id != game.Id)
+            {
+                return BadRequest();
+            }
 
-        //    _gameService.Entry(game).State = EntityState.Modified;
 
-        //    try
-        //    {
-        //        await _gameService.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!GameExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            try
+            {
+                _gameService.Update(_mapper.Map<GameEntity>(game));
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!GameExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-        //    return NoContent();
-        //}
+            return NoContent();
+        }
 
-        // DELETE: api/Games/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<Game>> DeleteGame(int id)
-        //{
-        //    var game = await _gameService.Games.FindAsync(id);
-        //    if (game == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // DELETE: api/Game/5
+        [HttpDelete("{id}")]
+        public ActionResult<GameDto> DeleteGame(int id)
+        {
+            var game = _gameService.GetGame(id);
+            if (game == null)
+            {
+                return NotFound();
+            }
 
-        //    _gameService.Games.Remove(game);
-        //    await _gameService.SaveChangesAsync();
+            _gameService.Delete(_mapper.Map<GameEntity>(game));
+            return _mapper.Map<GameDto>(game);
+        }
 
-        //    return game;
-        //}
-
-        //private bool GameExists(int id)
-        //{
-        //    return _gameService.Games.Any(e => e.Id == id);
-        //}
+        private bool GameExists(int id)
+        {
+            return _gameService.GetGames().Any(e => e.Id == id);
+        }
     }
 }

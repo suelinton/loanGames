@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using com.EmprestimoDeJogos.API.DTOs.Friend;
 using com.EmprestimoDeJogos.API.DTOs.Game;
 using com.EmprestimoDeJogos.Core.Entities;
 using System;
@@ -13,6 +14,9 @@ namespace com.EmprestimoDeJogos.API
         public MappingProfile()
         {
             CreateMap<GameEntity, GameDto>();
+            CreateMap<GameDto, GameEntity>();
+            CreateMap<FriendEntity, FriendDto>();
+            CreateMap<FriendDto, FriendEntity>();
         }
     }
 }

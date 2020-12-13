@@ -10,5 +10,7 @@ namespace com.EmprestimoDeJogos.Core.Interfaces
         IEnumerable<GameEntity> GetGames();
         GameEntity Add(GameEntity game);
         GameEntity GetGame(int id);
+        void Update(GameEntity game);
+        void Delete(GameEntity gameEntity);
     }
 }

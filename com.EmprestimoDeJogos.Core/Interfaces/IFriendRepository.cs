@@ -8,7 +8,9 @@ namespace com.EmprestimoDeJogos.Core.Interfaces
     public interface IFriendRepository
     {
         IEnumerable<FriendEntity> GetFriends();
-
         FriendEntity Add(FriendEntity friend);
+        FriendEntity GetFriend(int id);
+        void Update(FriendEntity friend);
+        void Delete(FriendEntity friendEntity);
     }
 }

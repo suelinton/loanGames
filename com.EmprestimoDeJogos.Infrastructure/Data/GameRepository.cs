@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace com.EmprestimoDeJogos.Infrastructure.Data
 {
@@ -24,6 +25,12 @@ namespace com.EmprestimoDeJogos.Infrastructure.Data
             return game;
         }
 
+        public void Delete(GameEntity gameEntity)
+        {
+            _context.Set<GameEntity>().Remove(gameEntity);
+            _context.SaveChanges();
+        }
+
         public GameEntity GetGame(int id)
         {
             return _context.Set<GameEntity>().SingleOrDefault(i => i.Id == id);
@@ -32,6 +39,12 @@ namespace com.EmprestimoDeJogos.Infrastructure.Data
         public IEnumerable<GameEntity> GetGames()
         {
             return _context.Games;
+        }
+
+        public void Update(GameEntity game)
+        {
+            _context.Entry(game).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

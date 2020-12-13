@@ -18,10 +18,26 @@ namespace com.EmprestimoDeJogos.Core.Services
             return _friendRepository.Add(friend);
         }
 
+        public void Delete(FriendEntity friendEntity)
+        {
+            _friendRepository.Delete(friendEntity);
+        }
+
+        public FriendEntity GetFriend(int id)
+        {
+            return _friendRepository.GetFriend(id);
+        }
+
         public IEnumerable<FriendEntity> GetFriends()
         {
             return _friendRepository.GetFriends();
+
         }
-        
+
+        public void Update(FriendEntity friend)
+        {
+            _friendRepository.Update(friend);
+        }
+
     }
 }
