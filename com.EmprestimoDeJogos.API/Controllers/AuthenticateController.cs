@@ -1,10 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using com.EmprestimoDeJogos.API.DTOs;
 using com.EmprestimoDeJogos.Core.Services;
 using com.EmprestimoDeJogos.Infrastructure.Identity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace com.EmprestimoDeJogos.API.Controllers
 {
@@ -28,6 +31,14 @@ namespace com.EmprestimoDeJogos.API.Controllers
         }
 
         [HttpPost("Criar")]
+        [SwaggerOperation(
+            Summary = "Creates a new user",
+            Description = "Creates a user",
+            OperationId = "authenticate.create",
+            Tags = new[] { "Authenticate" })
+        ]
+        [SwaggerResponse(200, "UserToken", typeof(UserToken))]
+        [SwaggerResponse(400, "List of error", typeof(IEnumerable<IdentityError>))]
         public async Task<ActionResult<UserToken>> CreateUser([FromBody] UserInfo model)
         {
             var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -53,6 +64,13 @@ namespace com.EmprestimoDeJogos.API.Controllers
 
 
         [HttpPost("Login")]
+        [SwaggerOperation(
+            Summary = "Authenticates a user",
+            Description = "Authenticates a user",
+            OperationId = "authenticate.login",
+            Tags = new[] { "Authenticate" })
+        ]
+        [SwaggerResponse(200, "UserToken", typeof(UserToken))]
         public async Task<ActionResult<UserToken>> Login([FromBody] UserInfo userInfo)
         {
             var result = await _signInManager.PasswordSignInAsync(userInfo.Email, userInfo.Password,
