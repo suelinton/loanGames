@@ -62,7 +62,6 @@ namespace com.EmprestimoDeJogos.API.Controllers
             
         }
 
-
         [HttpPost("Login")]
         [SwaggerOperation(
             Summary = "Authenticates a user",
@@ -71,6 +70,7 @@ namespace com.EmprestimoDeJogos.API.Controllers
             Tags = new[] { "Authenticate" })
         ]
         [SwaggerResponse(200, "UserToken", typeof(UserToken))]
+        [SwaggerResponse(400, "Invalid Login", typeof(string))]
         public async Task<ActionResult<UserToken>> Login([FromBody] UserInfo userInfo)
         {
             var result = await _signInManager.PasswordSignInAsync(userInfo.Email, userInfo.Password,
