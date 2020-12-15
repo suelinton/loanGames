@@ -9,11 +9,20 @@ using com.EmprestimoDeJogos.Core.Interfaces;
 using com.EmprestimoDeJogos.Core.Services;
 using com.EmprestimoDeJogos.Infrastructure.Data;
 using AutoMapper;
+using com.EmprestimoDeJogos.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace com.EmprestimoDeJogos.API
 {
     public class Startup
     {
+        private const string CORS_POLICY = "CorsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,10 +33,18 @@ namespace com.EmprestimoDeJogos.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<AppIdentityDbContext>()
+                    .AddDefaultTokenProviders();
+
             services.AddControllers();
 
             services.AddDbContext<LoanGameContext>(c =>
                 c.UseSqlServer(Configuration.GetConnectionString("LoanGameConnection")));
+
+            services.AddDbContext<AppIdentityDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
             services.AddScoped<IGameService, GameService>();
             services.AddScoped<IFriendService, FriendService>();
@@ -35,6 +52,41 @@ namespace com.EmprestimoDeJogos.API
             services.AddScoped<IFriendRepository, FriendRepository>();
 
             services.AddAutoMapper(typeof(Startup).Assembly);
+
+
+            services.AddScoped<ITokenClaimsService, IdentityTokenClaimService>();
+            services.AddMemoryCache();
+            var key = Configuration["JWT:Key"];
+            
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(config =>
+            {
+                config.RequireHttpsMetadata = false;
+                config.SaveToken = true;
+                config.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
+            services.AddAuthorization(options =>
+            {
+                var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(
+                    JwtBearerDefaults.AuthenticationScheme);
+
+                defaultAuthorizationPolicyBuilder =
+                    defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
+
+                options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
+            });
 
         }
 
@@ -49,8 +101,15 @@ namespace com.EmprestimoDeJogos.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(x => x
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .SetIsOriginAllowed(origin => true)
+               .AllowCredentials());
 
             app.UseAuthorization();
+            //app.UseAuthentication();
+
 
             app.UseEndpoints(endpoints =>
             {

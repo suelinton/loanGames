@@ -5,6 +5,7 @@ using com.EmprestimoDeJogos.API.DTOs.Game;
 using com.EmprestimoDeJogos.Core.Entities;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace com.EmprestimoDeJogos.API.Controllers
 {
@@ -35,8 +36,7 @@ namespace com.EmprestimoDeJogos.API.Controllers
         }
 
         // POST: api/Game
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Authorize]
         [HttpPost]
         public ActionResult<GameEntity> PostGame(CreateGameRequest request)
         {
@@ -65,9 +65,8 @@ namespace com.EmprestimoDeJogos.API.Controllers
         }
 
         // PUT: api/Game/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult PutGame(int id, GameDto game)
         {
             if (id != game.Id)
@@ -96,6 +95,7 @@ namespace com.EmprestimoDeJogos.API.Controllers
         }
 
         // DELETE: api/Game/5
+        [Authorize]
         [HttpDelete("{id}")]
         public ActionResult<GameDto> DeleteGame(int id)
         {

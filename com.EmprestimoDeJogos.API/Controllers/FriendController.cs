@@ -7,6 +7,7 @@ using com.EmprestimoDeJogos.API.DTOs.Friend;
 using com.EmprestimoDeJogos.API.DTOs.Game;
 using com.EmprestimoDeJogos.Core.Entities;
 using com.EmprestimoDeJogos.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,7 @@ namespace com.EmprestimoDeJogos.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class FriendController : ControllerBase
     {
         #region Properties
