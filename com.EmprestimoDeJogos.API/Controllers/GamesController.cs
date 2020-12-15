@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace com.EmprestimoDeJogos.API.Controllers
 {
-    [Route("api/game")]
+    [Route("v1/game")]
     [ApiController]
     public class GamesController : ControllerBase
     {

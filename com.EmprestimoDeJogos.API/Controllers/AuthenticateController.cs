@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace com.EmprestimoDeJogos.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/[controller]")]
     [ApiController]
     public class AuthenticateController : ControllerBase
     {

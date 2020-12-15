@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace com.EmprestimoDeJogos.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/[controller]")]
     [ApiController]
     [Authorize]
     public class FriendController : ControllerBase
