@@ -25,10 +25,12 @@ namespace com.EmprestimoDeJogos.Infrastructure.Data
             return game;
         }
 
-        public void Delete(GameEntity gameEntity)
+        public int Delete(GameEntity gameEntity)
         {
-            _context.Set<GameEntity>().Remove(gameEntity);
+            var result = _context.Set<GameEntity>().Remove(gameEntity);
             _context.SaveChanges();
+
+            return result.Entity.Id;
         }
 
         public GameEntity GetGame(int id)
@@ -41,10 +43,12 @@ namespace com.EmprestimoDeJogos.Infrastructure.Data
             return _context.Games;
         }
 
-        public void Update(GameEntity game)
+        public GameEntity Update(GameEntity game)
         {
             _context.Entry(game).State = EntityState.Modified;
             _context.SaveChanges();
+
+            return game;
         }
     }
 }

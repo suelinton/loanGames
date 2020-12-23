@@ -18,9 +18,9 @@ namespace com.EmprestimoDeJogos.Core.Services
             return _gameRepository.Add(game);
         }
 
-        public void Delete(GameEntity gameEntity)
+        public int Delete(GameEntity gameEntity)
         {
-            _gameRepository.Delete(gameEntity);
+            return _gameRepository.Delete(gameEntity);
         }
 
         public GameEntity GetGame(int id)
@@ -34,9 +34,9 @@ namespace com.EmprestimoDeJogos.Core.Services
             
         }
 
-        public void Update(GameEntity game)
+        public GameEntity Update(GameEntity game)
         {
-            _gameRepository.Update(game);
+            return _gameRepository.Update(game);
         }
     }
 }

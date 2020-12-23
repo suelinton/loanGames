@@ -28,9 +28,9 @@ namespace com.EmprestimoDeJogos.Core.Services
             return _friendRepository.Add(friend);
         }
 
-        public void Delete(FriendEntity friendEntity)
+        public bool Delete(FriendEntity friendEntity)
         {
-            _friendRepository.Delete(friendEntity);
+            return _friendRepository.Delete(friendEntity);
         }
 
         public FriendEntity GetFriend(int id)
@@ -44,9 +44,9 @@ namespace com.EmprestimoDeJogos.Core.Services
 
         }
 
-        public void Update(FriendEntity friend)
+        public bool Update(FriendEntity friend)
         {
-            _friendRepository.Update(friend);
+            return _friendRepository.Update(friend);
         }
 
     }

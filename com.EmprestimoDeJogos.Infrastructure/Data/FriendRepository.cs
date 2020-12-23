@@ -37,10 +37,12 @@ namespace com.EmprestimoDeJogos.Infrastructure.Data
             _context.SaveChanges();
         }
 
-        public void Delete(FriendEntity friendEntity)
+        public bool Delete(FriendEntity friendEntity)
         {
             _context.Set<FriendEntity>().Remove(friendEntity);
-            _context.SaveChanges();
+            var result = _context.SaveChanges();
+
+            return result >0;
         }
 
         public IEnumerable<GameEntity> GetBorrows(int id)
@@ -71,10 +73,12 @@ namespace com.EmprestimoDeJogos.Infrastructure.Data
             return _context.Friends;
         }
 
-        public void Update(FriendEntity friend)
+        public bool Update(FriendEntity friend)
         {
             _context.Entry(friend).State = EntityState.Modified;
-            _context.SaveChanges();
+            var result =_context.SaveChanges();
+
+            return result > 0;
         }
     }
 }
