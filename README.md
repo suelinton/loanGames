@@ -54,8 +54,8 @@ Pode ser usado o [Swagger](https://localhost:5001/swagger/index.html) ou o [Inso
 
 ## Licença
 
-This project is under the license [MIT](./LICENSE).
+Este projeto esta sobe a licença [MIT](./LICENSE).
 
 ##  Versões do README
 
-[Portuguese](./README.md)  |  [English ](./README-en.md)
+[Português](./README.md)  |  [Inglês](./README-en.md)
