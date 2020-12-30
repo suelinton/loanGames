@@ -12,8 +12,7 @@ Este projeto é um gerenciador de emprestimo de jogos.
 - [x] Testes
 - [ ] Front-end
 
-## How it works
-
+## Como executar o projeto
 
 ### Arquitetura
 Para este projeto, [Arquitetura limpa](https://docs.microsoft.com/pt-br/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures#clean-architecture) foi utiilzada conforme recomendado pela microsoft.
