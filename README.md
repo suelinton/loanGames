@@ -37,8 +37,8 @@ The following tools were used in the construction of the project:
 
 ### See Requests
 
-You can use [Swagger](https://localhost:5001/swagger/index.html) or import Insomnia Requests Backend API (https://github.com/suelinton/loanGames/blob/master/Insomnia_2020-12-23.json)
-
+You can use [Swagger](https://localhost:5001/swagger/index.html) or import [Insomnia](https://github.com/suelinton/loanGames/blob/master/Insomnia_2020-12-23.json)
+ Requests Backend API 
 ---
 ## Author
 
